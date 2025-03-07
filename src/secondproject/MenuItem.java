@@ -73,3 +73,5 @@ public class MenuItem {
 // new MenuItem("Cheese Burger", 5.2, " 머스타드 소스, 마요네즈, 저민 양파, 저민 피클, 치즈, 쇠고기 패티가 토핑된 치즈버거")
 // new MenuItem("Chicken Burger", 4.0, "닭다리살패티, 데리야키소스, 양상추, 마요네즈, 머스타드가 토핑된 치킨버거")
 // new MenuItem("Hanwoo Bulgogi Burger", 8.6, "마요네즈, 양파, 레터스, 불고기소스, 한우패티로 구성된 한우불고기버거")
+
+// 나중에 음료 메뉴 추가
