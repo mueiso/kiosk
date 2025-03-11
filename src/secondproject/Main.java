@@ -8,12 +8,15 @@ public class Main {
         // 키오스크 시작 메서드 호출
         kiosk.start();
 
-        // 크기 계산한 메뉴 사이즈 호출하고 사용자 선택받기 메서드 호출하기
-        System.out.println("[[ Lotteria Menu ]]");
+        // 카테고리 선택 메서드 호출
+        kiosk.getUserCategoryChoice();
+
+        // 메뉴 선택 메서드 호출
+        kiosk.getUserChoice();
         System.out.println();
-        int totalMenuSize = kiosk.menuSize();
-        int userChoice = kiosk.getUserChoice();
-        System.out.println();
+
+        // kiosk.menuSize();  // 메인에서 필요한지 확인
+
 
 
 
@@ -29,3 +32,7 @@ public class Main {
 
 // Kiosk 객체 생성
 // Kiosk 내 시작하는 함수 호출 -> 키오스크 프로그램을 시작하는 메서드 구현하고 -> start 함수 만들어서 관리
+
+
+
+// 구현할 것등 : 캡슐화, 장바구니, 구매하기, 선택한 메뉴 출력되기

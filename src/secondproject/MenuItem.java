@@ -6,9 +6,35 @@ import java.util.List;
 public class MenuItem {
 
     // 필드 선언
-    public String name;
-    public double price;
-    public String description;
+    private final String name;
+    private final double price;
+    private final String description;
+
+    // 게터
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    // 세터
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
 
     // 메뉴 아이템을 생성할 때 생성하는 생성자
     // MenuItem 객체를 생성할 때 이름, 가격, 설명을 받아서 필드에 저장

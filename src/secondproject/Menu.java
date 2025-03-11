@@ -5,9 +5,15 @@ import java.util.List;
 public class Menu {
 
     public String name;
+    public double price;
 
     // 메뉴 항목 저장할 리스트
-    public List<MenuItem> menuItems;  // 객체들의 리스트 (각 카테고리의 메뉴 항목들을 저장)
+    private List<MenuItem> menuItems;  // 객체들의 리스트 (각 카테고리의 메뉴 항목들을 저장)
+
+    // 게터
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
 
     // 생성자 (메뉴 항목 받아서 각 카테고리의 메뉴 항목 초기화)
     public Menu(String name) {  // 메뉴 객체 생성할 때 카테고리 이름 받아오기
@@ -26,7 +32,7 @@ public class Menu {
         System.out.println("[ " + name + " ]");
         for (int i = 0; i < menuItems.size(); i++) {
             MenuItem items = menuItems.get(i);
-            System.out.println((i + 1) + ". " + items.name + " | " + items.price + " | " + items.description);
+            System.out.println((i + 1) + ". " + items.getName() + " | " + items.getPrice() + " | " + items.getDescription());
         }
     }
 
