@@ -23,19 +23,6 @@ public class MenuItem {
         return description;
     }
 
-    // 세터
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public void setPrice(double price) {
-//        this.price = price;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
-
     // 메뉴 아이템을 생성할 때 생성하는 생성자
     // MenuItem 객체를 생성할 때 이름, 가격, 설명을 받아서 필드에 저장
     public MenuItem(String name, double price, String description) {
@@ -71,6 +58,7 @@ public class MenuItem {
     }
 }
 
+// ================= To do List =================
 
 // 세부 메뉴 속성 가지는 클래스
 // List를 선언하여 여러 메뉴 추가 -> List<MenuItem> menuItems = new ArrayList<>();
@@ -78,3 +66,20 @@ public class MenuItem {
 // 이름, 가격, 설명 필드 선언하여 관리
 
 // 구조에 맞게 함수를 선언해놓고 가져다 사용
+
+// ================= 수정 과정에서 뺀 메서드 =================
+
+// 세터
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
+
+// =======================================================

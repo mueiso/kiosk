@@ -1,20 +1,20 @@
 package secondproject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class Kiosk {
 
     Scanner sc = new Scanner(System.in);
 
+    int choice;
+
+
     // 키오스크 시작 메서드
     public void start() {
         System.out.println("키오스크를 시작합니다.");
         System.out.println();
-    }
-
-    // 메뉴 크기 메서드
-    public int menuSize() {
-        return Menu.TotalMenuSize(burgerMenu, drinkMenu);
     }
 
     // 카테고리 배열로 관리
@@ -25,7 +25,7 @@ public class Kiosk {
     Menu drinkMenu = new Menu("음료 메뉴");
 
     // 사용자에게 카테고리 번호를 입력받는 메서드
-    public int getUserCategoryChoice() {
+    public void getUserCategoryChoice() {
         int choice;
 
         while (true) {
@@ -52,67 +52,63 @@ public class Kiosk {
                 if (choice >= 1 && choice <= Categories.length) {
                     // 카테고리 선택 후 해당 카테고리 출력하는 연산 로직
                     // 상황 연산자(? :) → (조건) ? 조건이 참일 때 실행할 코드 : 조건이 거짓일 때 실행할 코드
-                    Menu SelectedCategory = (choice == 1) ? burgerMenu : drinkMenu;
+                    Menu selectedCategory = (choice == 1) ? burgerMenu : drinkMenu;
                     // choice가 1이면 참 → 버거메뉴 출력, 2면 거짓 → 음료 메뉴 출력
 
                     // 선택된 카테고리 출력
-                    SelectedCategory.printMenuItem();
+                    selectedCategory.printMenuItem();
+                    // 선택된 카테고리의 메뉴로 이동
+                    getUserChoice();
                     break;  // 선택이 완료되면 반복문 종료
                 } else {
-                    System.out.println("유효하지 않은 번호입니다. 선택지에 있는 번호를 입력해주세요.");
+                    System.out.println("유효하지 않은 번호입니다. 선택지 중에서 번호를 골라 입력해주세요.");
                     System.out.println();
                 }
             } catch (NumberFormatException a) {
                 System.out.println("잘못된 입력입니다. 숫자만 입력해주세요.");
                 System.out.println();
             }
-        } return -1;
+        }
     }
 
-    // 메뉴 항목 배열로 관리
-//    private final String[] MenuDetails = {"버거 메뉴", "음료 메뉴"};
-//
-//    // 각 카테고리의 Menu 객체 생성
-//    Menu burgerMenuDetail = new Menu("버거 메뉴");
-//    Menu drinkMenuDetail = new Menu("음료 메뉴");
-
-    // 사용자에게 메뉴 번호를 입력받는 메서드
+    // 사용자에게 메뉴 번호 입력 받는 메서드
     public int getUserChoice() {
-        int choice;
 
         while (true) {
             // 번호 입력 받기
             System.out.println();
-            System.out.println("원하는 제품의 번호를 입력해주세요 (0을 입력하면 종료): ");
+            System.out.println("원하는 제품의 번호를 입력해주세요 (0을 입력하면 뒤로가기): ");
             String input = sc.nextLine();
 
             try {
                 // 입력 받은 (문자 형태)숫자를 숫자로 인식하기 위해 형 변환
                 choice = Integer.parseInt(input);
 
-                // 0 입력시 종료
+                // 0 입력시 뒤로가기
                 if (choice == 0) {
-                    System.out.println("프로그램을 종료합니다.");
-                    System.exit(0);
+                    System.out.println("카테고리 선택으로 돌아갑니다.");
+                    System.out.println();
+                    getUserCategoryChoice();
+                    break;
+                }
 
-                    if (choice > 0 && choice <= menuSize()) {
-                        // 선택된 제품 출력하는 연산 로직
-                        MenuItem selectedMenu = burgerMenu.getMenuItems().get(choice - 1);
-                        printSelectedMenu(selectedMenu);
-                    } else {
-                        MenuItem selectedMenu = drinkMenu.getMenuItems().get(choice - burgerMenu.MenuSize() - 1);
-                        printSelectedMenu(selectedMenu);
-                    } break;
-
-                    // 메뉴 번호가 유효한지 확인
-                } else {
-                    System.out.println("유효하지 않은 번호입니다. 1 ~ " + menuSize() + " 사이의 번호만 입력해주세요.");
+                if (choice > 0 && choice <= burgerMenu.MenuSize()) {
+                    // 선택된 제품 출력하는 연산 로직
+                    MenuItem selectedMenu = burgerMenu.getMenuItems().get(choice - 1);  // 0부터 시작하기 때문에 -1
+                    printSelectedMenu(selectedMenu);
+                    shoppingCart(selectedMenu);
+                } else if (choice > 0 && choice <= drinkMenu.MenuSize()) {
+                    MenuItem selectedMenu = drinkMenu.getMenuItems().get(choice - 1);
+                    printSelectedMenu(selectedMenu);
+                    shoppingCart(selectedMenu);
+                } else {  // 메뉴 번호가 유효한지 확인
+                    System.out.println("유효하지 않은 번호입니다. 선택지 중에서 번호를 골라 입력해주세요.");
                 }
 
             } catch (NumberFormatException a) {
                 System.out.println("잘못된 입력입니다. 숫자만 입력해주세요.");
             }
-        }
+        } return choice;
     }
 
     // 선택한 메뉴를 출력하는 메서드
@@ -124,8 +120,61 @@ public class Kiosk {
         System.out.println();
     }
 
+    // 장바구니 담을 리스트 생성
+    public List<MenuItem> orders = new ArrayList<>();
+
+    // 장바구니 메서드
+    public void shoppingCart(MenuItem selectedMenu) {
+        // 장바구니에 담을지 물어보는 로직
+        System.out.println("장바구니에 담으시겠습니싸? (추가 / 취소): ");
+        String addToCart = sc.nextLine();
+
+        if (addToCart.equals("추가")) {
+            orders.add(selectedMenu);
+            System.out.println(selectedMenu.getName() + " 가 장바구니에 추가되었습니다.");
+            System.out.println();
+            printShoppingCart();
+        } else if (addToCart.equals("취소")) {
+            System.out.println("취소되었습니다.");
+            selectedCategory.printMenuItem();
+            getUserChoice();
+        } else {
+            System.out.println("잘못된 입력입니다. '추가' 또는 '취소'를 입력하세요.");
+        }
+    }
+
+    // 장바구니 담긴 목록 총 금액 계산해서 출력하는 메서드
+    public void printShoppingCart() {
+        if (orders.isEmpty()) {
+            System.out.println("장바구니에 아무것도 없습니다. 먼저 메뉴를 선택해주세요.");
+            return;
+        }
+        System.out.println("[ ORDER MENU ]");
+        System.out.println();
+        double totalPrice = 0;
+
+        // ':' 향상된 for문 (shoppingCart에서 MenuItem 타입의 요소들을 하나씩 써내서 item에 담고 반복)
+        for (MenuItem item : orders) {
+            System.out.println(item.getName() + " | " + item.getPrice() + " | ");
+            totalPrice += item.getPrice();
+        }
+
+        System.out.println("총 금액: " + totalPrice);
+        System.out.println("주문하시겠습니까? (주문하기 / 취소): ");
+        String order = sc.nextLine();
+
+        if (order.equals("주문하기")) {
+            System.out.println("주문이 완료되었습니다. 감사합니다.");
+            orders.clear();  // 장바구니 초기화
+        } else {
+            System.out.println("주문이 취소되었습니다.");
+        }
+    }
+
+
 }
 
+// ================= To do List =================
 
 // 프로그램 순서 및 흐름 제어를 담당하는 클래스
 // 키오스크 실행 시 콘솔에 햄버거 메뉴 (with 선택번호) 출력, 종료 (with 선택번호) 함께 출력
@@ -147,3 +196,15 @@ public class Kiosk {
 // 주문할 메뉴 숫자 입력 받기
 // 입력 받은 숫자가 올바르다면 인덱스로 활용해서 Menu가 가지고 있는 List<MenuItem>에 접근하기
 // menu.getMenuItems().get(i); 같은 형식으로 하나씩 들어가서 얻어오기
+
+// 장바구니: 메뉴를 선택/입력 시 장바구니에 추가할 지 물어보고, 입력값에 따라 추가/취소 처리, 메뉴는 한 번에 1개만 담기
+// 장바구니에 담긴 모든 항목 출력, 합산하여 총 금액을 계산하고, “주문하기”를 누르면 장바구니를 초기화, ⭐장바구니 목록 수량도 출력
+
+// ================= 수정 과정에서 뺀 메서드 =================
+
+// 메뉴 총 크기 메서드 호출
+//    public int menuSize() {
+//        return Menu.TotalMenuSize(burgerMenu, drinkMenu);
+//    }
+
+// =======================================================

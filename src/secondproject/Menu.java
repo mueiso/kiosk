@@ -5,7 +5,6 @@ import java.util.List;
 public class Menu {
 
     public String name;
-    public double price;
 
     // 메뉴 항목 저장할 리스트
     private List<MenuItem> menuItems;  // 객체들의 리스트 (각 카테고리의 메뉴 항목들을 저장)
@@ -41,18 +40,9 @@ public class Menu {
     public int MenuSize() {
         return menuItems.size();
     }
-
-    public static int TotalMenuSize(Menu burgerMenu, Menu drinkMenu) {
-        return burgerMenu.MenuSize() + drinkMenu.MenuSize();
-    }
-
-
-
-
-
-
 }
 
+// ================= To do List =================
 
 // MenuItem 클래스를 관리하는 클래스
 // 카테고리 이름 필드 추가 -> 버거 메뉴, 음료 메뉴, 디저트 메뉴 등 각 카테고리 내에 여러 MenuItem 을 포함
@@ -66,3 +56,12 @@ public class Menu {
 // List를 리턴하는 함수
 
 // 구조에 맞게 함수를 선언해놓고 가져다 사용
+
+// ================= 수정 과정에서 뺀 메서드 =================
+
+// 메뉴 총 크기 계산 메서드
+// public static int TotalMenuSize(Menu burgerMenu, Menu drinkMenu) {
+//        return burgerMenu.MenuSize() + drinkMenu.MenuSize();
+//    }
+
+// =======================================================
