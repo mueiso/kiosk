@@ -8,6 +8,8 @@ public class Kiosk {
 
     Scanner sc = new Scanner(System.in);
 
+    String input = sc.nextLine();
+
     // 키오스크 시작 메서드
     public void start() {
         System.out.println("키오스크를 시작합니다.");
@@ -50,7 +52,6 @@ public class Kiosk {
 
 
             System.out.println("원하는 카테고리의 번호를 입력해주세요: ");
-            String input = sc.nextLine();
 
             try {
                 choice = Integer.parseInt(input);
@@ -93,7 +94,6 @@ public class Kiosk {
             // 번호 입력 받기
             System.out.println();
             System.out.println("원하는 제품의 번호를 입력해주세요 (0을 입력하면 뒤로가기): ");
-            String input = sc.nextLine();
 
             try {
                 // 입력 받은 (문자 형태)숫자를 숫자로 인식하기 위해 형 변환
