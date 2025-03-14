@@ -142,7 +142,7 @@ public class Kiosk {
 
         while (true) {
 
-            // 선택한 메뉴 상세정보 출력하는 메서드호출
+            // 선택한 메뉴 상세정보 출력하는 메서드 호출
             printSelectedMenu();
 
             // 장바구니에 담을지 물어보는 로직
@@ -170,13 +170,13 @@ public class Kiosk {
     // 장바구니 담긴 목록 총 금액 계산해서 출력하는 메서드
     public void printShoppingCart() {
 
+        double totalPrice = 0;
+
         if (orders.isEmpty()) {
             System.out.println("▶ 장바구니에 아무것도 없습니다. 먼저 메뉴를 선택해주세요 ◀");
             return;
         }
         System.out.println("[ Orders ]");
-
-        double totalPrice = 0;
 
         // ':' 향상된 for문 (shoppingCart에서 MenuItem 타입의 요소들을 하나씩 써내서 item에 담고 반복)
         for (MenuItem item : orders) {

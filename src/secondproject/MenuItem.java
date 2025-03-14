@@ -62,6 +62,7 @@ public class MenuItem {
 
 // 세부 메뉴 속성 가지는 클래스
 // List를 선언하여 여러 메뉴 추가 -> List<MenuItem> menuItems = new ArrayList<>();
+// 나중에 디저트 메뉴 추가
 
 // 이름, 가격, 설명 필드 선언하여 관리
 
