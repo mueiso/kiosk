@@ -56,12 +56,3 @@ public class Menu {
 // List를 리턴하는 함수
 
 // 구조에 맞게 함수를 선언해놓고 가져다 사용
-
-// ================= 수정 과정에서 뺀 메서드 =================
-
-// 메뉴 총 크기 계산 메서드
-// public static int TotalMenuSize(Menu burgerMenu, Menu drinkMenu) {
-//        return burgerMenu.MenuSize() + drinkMenu.MenuSize();
-//    }
-
-// =======================================================
