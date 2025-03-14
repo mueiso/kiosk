@@ -1,4 +1,4 @@
-#▶ kiosk 프로젝트 ◀
+# ▶ kiosk 프로젝트 ◀
 
 JDK version 17
 
