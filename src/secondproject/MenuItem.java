@@ -61,11 +61,13 @@ public class MenuItem {
 // ================= To do List =================
 
 // 세부 메뉴 속성 가지는 클래스
-// List를 선언하여 여러 메뉴 추가 -> List<MenuItem> menuItems = new ArrayList<>();
-
+// List 를 선언하여 여러 메뉴 추가 -> List<MenuItem> menuItems = new ArrayList<>();
 // 이름, 가격, 설명 필드 선언하여 관리
-
 // 구조에 맞게 함수를 선언해놓고 가져다 사용
+
+// 나중에 디저트 메뉴 추가
+
+// 'Class can be record class' 문구 구글링 해보기
 
 // ================= 수정 과정에서 뺀 메서드 =================
 

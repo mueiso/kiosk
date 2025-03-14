@@ -46,13 +46,14 @@ public class Kiosk {
 
             System.out.println("[ ORDER MENU ]");
             System.out.println("[ 4. Orders ]  |  장바구니를 확인 후 주문합니다.");
-            System.out.println("[ 5. Cancle ]  |  진행중인 주문을 취소합니다.");
+            System.out.println("[ 5. Cancel ]  |  진행중인 주문을 취소합니다.");
 
 
             System.out.println("원하는 카테고리의 번호를 입력해주세요: ");
-            String input = sc.nextLine();
 
             try {
+                String input = sc.nextLine();
+
                 choice = Integer.parseInt(input);
 
                 if (choice == 0) {
@@ -63,7 +64,7 @@ public class Kiosk {
                     // 카테고리 선택 후 해당 카테고리 출력하는 연산 로직
                     // 상황 연산자(? :) → (조건) ? 조건이 참일 때 실행할 코드 : 조건이 거짓일 때 실행할 코드
                     selectedCategory = (choice == 1) ? burgerMenu : drinkMenu;
-                    // choice가 1이면 참 → 버거메뉴 출력, 2면 거짓 → 음료 메뉴 출력
+                    // choice 가 1이면 참 → 버거메뉴 출력, 2면 거짓 → 음료 메뉴 출력
 
                     // 선택된 카테고리의 메뉴로 이동
                     getUserChoice();
@@ -93,9 +94,10 @@ public class Kiosk {
             // 번호 입력 받기
             System.out.println();
             System.out.println("원하는 제품의 번호를 입력해주세요 (0을 입력하면 뒤로가기): ");
-            String input = sc.nextLine();
 
             try {
+                String input = sc.nextLine();
+
                 // 입력 받은 (문자 형태)숫자를 숫자로 인식하기 위해 형 변환
                 choice = Integer.parseInt(input);
 
@@ -108,7 +110,7 @@ public class Kiosk {
                 }
 
                 if (choice > 0 && choice <= selectedCategory.MenuSize()) {
-                    // 선택된 메뉴 항목을 selectedMenu에 할당
+                    // 선택된 메뉴 항목을 selectedMenu 에 할당
                     selectedMenu = selectedCategory.getMenuItems().get(choice - 1);  // 0부터 시작하기 때문에 -1
                     shoppingCart(selectedMenu);
                     break;
@@ -142,7 +144,7 @@ public class Kiosk {
 
         while (true) {
 
-            // 선택한 메뉴 상세정보 출력하는 메서드호출
+            // 선택한 메뉴 상세정보 출력하는 메서드 호출
             printSelectedMenu();
 
             // 장바구니에 담을지 물어보는 로직
@@ -170,15 +172,15 @@ public class Kiosk {
     // 장바구니 담긴 목록 총 금액 계산해서 출력하는 메서드
     public void printShoppingCart() {
 
+        double totalPrice = 0;
+
         if (orders.isEmpty()) {
             System.out.println("▶ 장바구니에 아무것도 없습니다. 먼저 메뉴를 선택해주세요 ◀");
             return;
         }
         System.out.println("[ Orders ]");
 
-        double totalPrice = 0;
-
-        // ':' 향상된 for문 (shoppingCart에서 MenuItem 타입의 요소들을 하나씩 써내서 item에 담고 반복)
+        // ':' 향상된 for 문 (shoppingCart 에서 MenuItem 타입의 요소들을 하나씩 써내서 item 에 담고 반복)
         for (MenuItem item : orders) {
             System.out.println(item.getName() + " | " + item.getPrice() + " | " + item.getDescription());
             totalPrice += item.getPrice();
@@ -196,7 +198,6 @@ public class Kiosk {
         }
     }
 
-
 }
 
 // ================= To do List =================
@@ -206,11 +207,4 @@ public class Kiosk {
 // 사용자에게 숫자를 입력 받아 메뉴를 선택, 0을 입력하면 프로그램 종료
 // 예외처리는 오류메시지 출력
 
-// Menu가 가진 List<MenuItem>을 반복문을 활용하여 햄버거 메뉴 출력
-
-// 주문할 메뉴 숫자 입력 받기
-// 입력 받은 숫자가 올바르다면 인덱스로 활용해서 Menu가 가지고 있는 List<MenuItem>에 접근하기
-// menu.getMenuItems().get(i); 같은 형식으로 하나씩 들어가서 얻어오기
-
-// 장바구니: 메뉴를 선택/입력 시 장바구니에 추가할 지 물어보고, 입력값에 따라 추가/취소 처리, 메뉴는 한 번에 1개만 담기
-// 장바구니에 담긴 모든 항목 출력, 합산하여 총 금액을 계산하고, “주문하기”를 누르면 장바구니를 초기화, ⭐장바구니 목록 수량도 출력
+// 장바구니 목록 수량도 출력
