@@ -47,7 +47,7 @@ public class Menu {
 // MenuItem 클래스를 관리하는 클래스
 // 카테고리 이름 필드 추가 -> 버거 메뉴, 음료 메뉴, 디저트 메뉴 등 각 카테고리 내에 여러 MenuItem 을 포함
 
-// MenuItem 클래스를 List로 관리
+// MenuItem 클래스를 List 로 관리
 // Menu 객체 생성하면서 카테고리 이름 설정 (버거, 음료, 디저트 등등)
-// List에 포함된 MenuItem을 순차적으로 보여주는 함수
+// List 에 포함된 MenuItem 을 순차적으로 보여주는 함수
 // 구조에 맞게 함수를 선언해놓고 가져다 사용

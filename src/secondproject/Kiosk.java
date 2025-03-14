@@ -48,7 +48,7 @@ public class Kiosk {
 
             System.out.println("[ ORDER MENU ]");
             System.out.println("[ 4. Orders ]  |  장바구니를 확인 후 주문합니다.");
-            System.out.println("[ 5. Cancle ]  |  진행중인 주문을 취소합니다.");
+            System.out.println("[ 5. Cancel ]  |  진행중인 주문을 취소합니다.");
 
 
             System.out.println("원하는 카테고리의 번호를 입력해주세요: ");
@@ -64,7 +64,7 @@ public class Kiosk {
                     // 카테고리 선택 후 해당 카테고리 출력하는 연산 로직
                     // 상황 연산자(? :) → (조건) ? 조건이 참일 때 실행할 코드 : 조건이 거짓일 때 실행할 코드
                     selectedCategory = (choice == 1) ? burgerMenu : drinkMenu;
-                    // choice가 1이면 참 → 버거메뉴 출력, 2면 거짓 → 음료 메뉴 출력
+                    // choice 가 1이면 참 → 버거메뉴 출력, 2면 거짓 → 음료 메뉴 출력
 
                     // 선택된 카테고리의 메뉴로 이동
                     getUserChoice();
@@ -108,7 +108,7 @@ public class Kiosk {
                 }
 
                 if (choice > 0 && choice <= selectedCategory.MenuSize()) {
-                    // 선택된 메뉴 항목을 selectedMenu에 할당
+                    // 선택된 메뉴 항목을 selectedMenu 에 할당
                     selectedMenu = selectedCategory.getMenuItems().get(choice - 1);  // 0부터 시작하기 때문에 -1
                     shoppingCart(selectedMenu);
                     break;
@@ -178,7 +178,7 @@ public class Kiosk {
         }
         System.out.println("[ Orders ]");
 
-        // ':' 향상된 for문 (shoppingCart에서 MenuItem 타입의 요소들을 하나씩 써내서 item에 담고 반복)
+        // ':' 향상된 for 문 (shoppingCart 에서 MenuItem 타입의 요소들을 하나씩 써내서 item 에 담고 반복)
         for (MenuItem item : orders) {
             System.out.println(item.getName() + " | " + item.getPrice() + " | " + item.getDescription());
             totalPrice += item.getPrice();
